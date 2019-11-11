@@ -1,14 +1,11 @@
 package com.carlesramos.examen_pm.parsers;
 
 import android.content.Context;
-
 import com.carlesramos.examen_pm.model.ModelClass;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
-
 import java.io.IOException;
 import java.io.InputStream;
 

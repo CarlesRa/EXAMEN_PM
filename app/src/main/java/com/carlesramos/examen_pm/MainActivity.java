@@ -26,11 +26,11 @@ public class MainActivity extends AppCompatActivity implements IMiListener {
         boolean hayDetalle = (getSupportFragmentManager().findFragmentById(R.id.frgDetalle) != null);
         ModelClass modelClass = frgListado.getModelos()[position];
 
-        if (hayDetalle){
+        if (hayDetalle) {
             FragmentDetalle frgDetalle = (FragmentDetalle)getSupportFragmentManager().findFragmentById(R.id.frgDetalle);
             frgDetalle.mostrarDetalle(modelClass);
         }
-        else{
+        else {
             Intent i = new Intent(this, DetalleActivity.class);
             i.putExtra(DetalleActivity.EXTRA_TEXTO, modelClass);
             startActivity(i);
