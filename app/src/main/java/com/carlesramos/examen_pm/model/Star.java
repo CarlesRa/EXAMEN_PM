@@ -2,7 +2,7 @@ package com.carlesramos.examen_pm.model;
 
 import java.io.Serializable;
 
-public class Star implements Serializable {
+public class Star implements Serializable, Comparable<Star>{
     private int id;
     private int hip;
     private String bf;
@@ -59,5 +59,16 @@ public class Star implements Serializable {
 
     public String getSpect() {
         return spect;
+    }
+
+    @Override
+    public int compareTo(Star o) {
+        if (dist < o.getDist()){
+            return -1;
+        }
+        if (dist > o.getDist()){
+            return 1;
+        }
+        return 0;
     }
 }

@@ -13,10 +13,4 @@
         android:layout_height="wrap_content"
         android:layout_weight="1" />
 
-    <fragment
-        android:id="@+id/frgDetalle"
-        android:name="com.carlesramos.examen_pm.fragments.FragmentDetalle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
 </LinearLayout>

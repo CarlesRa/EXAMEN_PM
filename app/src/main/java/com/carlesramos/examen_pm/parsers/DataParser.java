@@ -10,10 +10,13 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class DataParser {
     //crear array del model
-    private Star[] stars;
+    private ArrayList <Star> stars;
     private InputStream dataFile;
 
     public DataParser(Context c) {
@@ -37,7 +40,7 @@ public class DataParser {
 
             JSONTokener tokener = new JSONTokener(json);
             JSONArray jsonArray = new JSONArray(tokener);
-            stars = new Star[jsonArray.length()];
+            stars = new ArrayList<>();
 
             for (int i=0; i<jsonArray.length(); i++){
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -52,7 +55,7 @@ public class DataParser {
                 double mag = jsonObject.getDouble("mag");
                 String spect = jsonObject.getString("spect");
                 //creem un nou objecte i l'anyadim al array
-                stars[i] = new Star(id,hip,bf,proper,re,dec,dist,mag,spect);
+                stars.add(new Star(id,hip,bf,proper,re,dec,dist,mag,spect));
             }
             parsed = true;
         } catch (IOException e) {
@@ -63,7 +66,8 @@ public class DataParser {
         return parsed;
     }
 
-    public Star[] getStars() {
+    public ArrayList<Star> getStars() {
+        Collections.sort(stars);
         return stars;
     }
 }

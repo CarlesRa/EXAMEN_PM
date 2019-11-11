@@ -11,12 +11,14 @@ import com.carlesramos.examen_pm.R;
 import com.carlesramos.examen_pm.interficies.IMiListener;
 import com.carlesramos.examen_pm.model.Star;
 
+import java.util.ArrayList;
+
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ModelViewHolder>{
 
     private IMiListener listener;
-    private Star[] stars;
+    private ArrayList<Star> stars;
 
-    public DataAdapter(IMiListener listener, Star[] stars) {
+    public DataAdapter(IMiListener listener, ArrayList<Star> stars) {
         this.listener = listener;
         this.stars = stars;
     }
@@ -30,13 +32,13 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ModelViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull ModelViewHolder holder, int position) {
-        Star star = stars[position];
+        Star star = stars.get(position);
         holder.bindModel(star);
     }
 
     @Override
     public int getItemCount() {
-        return stars.length;
+        return stars.size();
     }
 
 

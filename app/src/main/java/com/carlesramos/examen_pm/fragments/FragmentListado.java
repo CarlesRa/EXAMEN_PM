@@ -17,10 +17,12 @@ import com.carlesramos.examen_pm.interficies.IMiListener;
 import com.carlesramos.examen_pm.model.Star;
 import com.carlesramos.examen_pm.parsers.DataParser;
 
+import java.util.ArrayList;
+
 public class FragmentListado extends Fragment {
     private IMiListener listener;
     private RecyclerView rvListado;
-    private Star[] stars;
+    private ArrayList<Star> stars;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -44,7 +46,7 @@ public class FragmentListado extends Fragment {
         this.listener = listener;
     }
 
-    public Star[] getStars() {
+    public ArrayList<Star> getStars() {
         return stars;
     }
 }

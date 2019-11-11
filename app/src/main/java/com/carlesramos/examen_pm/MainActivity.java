@@ -2,11 +2,10 @@ package com.carlesramos.examen_pm;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
-import com.carlesramos.examen_pm.fragments.FragmentDetalle;
 import com.carlesramos.examen_pm.fragments.FragmentListado;
 import com.carlesramos.examen_pm.interficies.IMiListener;
 import com.carlesramos.examen_pm.model.Star;
@@ -25,17 +24,15 @@ public class MainActivity extends AppCompatActivity implements IMiListener {
     @Override
     public void onItemSelected(int position) {
         boolean hayDetalle = (getSupportFragmentManager().findFragmentById(R.id.frgDetalle) != null);
-        Star star = frgListado.getStars()[position];
+        StringBuilder sb = new StringBuilder();
+        Star star = frgListado.getStars().get(position);
         Toast.makeText(this, "Ascension recta: " + star.getRa()
                 + "\nDeclinación: " + star.getDec(), Toast.LENGTH_SHORT).show();
-        /*if (hayDetalle) {
-            FragmentDetalle frgDetalle = (FragmentDetalle)getSupportFragmentManager().findFragmentById(R.id.frgDetalle);
-            frgDetalle.mostrarDetalle(star);
-        }
-        else {
-            Intent i = new Intent(this, DetalleActivity.class);
-            i.putExtra(DetalleActivity.EXTRA_TEXTO, star);
-            startActivity(i);
-        }*/
+        sb.append("Id: ").append(star.getId()).append(" Hip: ").append(star.getHip()).append(" Bf: ")
+                .append(star.getBf()).append(" Proper: ").append(star.getProper()).append(" Ra: ")
+                .append(star.getRa()).append(" Dec: ").append(star.getDec()).append(" Dist: ")
+                .append(star.getDist()).append(" Mag: ").append(star.getMag()).append(" Spect: ")
+                .append(star.getSpect());
+        Log.i( "Complet Info:",sb.toString());
     }
 }
