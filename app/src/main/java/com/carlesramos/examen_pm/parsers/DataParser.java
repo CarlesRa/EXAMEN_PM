@@ -1,7 +1,6 @@
 package com.carlesramos.examen_pm.parsers;
 
 import android.content.Context;
-
 import com.carlesramos.examen_pm.R;
 import com.carlesramos.examen_pm.model.Star;
 import org.json.JSONArray;
@@ -11,11 +10,10 @@ import org.json.JSONTokener;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 public class DataParser {
-    //crear array del model
+
     private ArrayList <Star> stars;
     private InputStream dataFile;
 
@@ -26,6 +24,10 @@ public class DataParser {
 
     }
 
+    /**
+     * Hace  el parseo de los datos obteniendolos de un json
+     * @return true si se parseo correctamente o false si no
+     */
     public boolean parse(){
         boolean parsed = false;
         String json = null;
@@ -44,6 +46,7 @@ public class DataParser {
 
             for (int i=0; i<jsonArray.length(); i++){
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
+
                 //plenem les dades segons el model
                 int id = jsonObject.getInt("id");
                 int hip = jsonObject.getInt("hip");
@@ -54,6 +57,7 @@ public class DataParser {
                 double dist = jsonObject.getDouble("dist");
                 double mag = jsonObject.getDouble("mag");
                 String spect = jsonObject.getString("spect");
+
                 //creem un nou objecte i l'anyadim al array
                 stars.add(new Star(id,hip,bf,proper,re,dec,dist,mag,spect));
             }

@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity implements IMiListener {
 
     @Override
     public void onItemSelected(int position) {
-        boolean hayDetalle = (getSupportFragmentManager().findFragmentById(R.id.frgDetalle) != null);
         StringBuilder sb = new StringBuilder();
         Star star = frgListado.getStars().get(position);
         Toast.makeText(this, "Ascension recta: " + star.getRa()
