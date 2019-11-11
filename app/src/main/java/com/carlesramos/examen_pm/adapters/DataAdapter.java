@@ -3,22 +3,22 @@ package com.carlesramos.examen_pm.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.carlesramos.examen_pm.R;
 import com.carlesramos.examen_pm.interficies.IMiListener;
-import com.carlesramos.examen_pm.model.ModelClass;
+import com.carlesramos.examen_pm.model.Star;
 
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ModelViewHolder>{
 
     private IMiListener listener;
-    private ModelClass[] modelClasses;
+    private Star[] stars;
 
-    public DataAdapter(IMiListener listener, ModelClass[] modelClasses) {
+    public DataAdapter(IMiListener listener, Star[] stars) {
         this.listener = listener;
-        this.modelClasses = modelClasses;
+        this.stars = stars;
     }
 
     @NonNull
@@ -30,30 +30,45 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ModelViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull ModelViewHolder holder, int position) {
-        ModelClass modelClass = modelClasses[position];
-        holder.bindModel(modelClass);
+        Star star = stars[position];
+        holder.bindModel(star);
     }
 
     @Override
     public int getItemCount() {
-        return modelClasses.length;
+        return stars.length;
     }
 
 
     public static class ModelViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        //elements de la llista a rellenar!!
-
+        //atributs per referenciar elements del layout!!
+        private TextView tvId;
+        private TextView tvProper;
+        private TextView tvDist;
+        private TextView tvMag;
+        private TextView tvSpect;
         private IMiListener listener;
         public ModelViewHolder(@NonNull View itemView, IMiListener listener) {
             super(itemView);
+
+            //referencie els atributs del layout
+            tvId = itemView.findViewById(R.id.tvId);
+            tvProper = itemView.findViewById(R.id.tvPoper);
+            tvDist = itemView.findViewById(R.id.tvDist);
+            tvMag = itemView.findViewById(R.id.tvMag);
+            tvSpect = itemView.findViewById(R.id.tvSpect);
 
             this.listener = listener;
             itemView.setOnClickListener(this);
         }
 
-        public void bindModel(ModelClass modelClass){
+        public void bindModel(Star star){
             // pose valors als textsviews i altres elements
-
+            tvId.setText(String.valueOf(star.getId()));
+            tvProper.setText(star.getProper());
+            tvDist.setText(String.valueOf(star.getDist()));
+            tvMag.setText(String.valueOf(star.getMag()));
+            tvSpect.setText(star.getSpect());
         }
 
 

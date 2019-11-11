@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.carlesramos.examen_pm.fragments.FragmentDetalle;
-import com.carlesramos.examen_pm.model.ModelClass;
+import com.carlesramos.examen_pm.model.Star;
 
 public class DetalleActivity extends AppCompatActivity {
     public static final String EXTRA_TEXTO = "com.carlesramos.fragments.EXTRA_TEXTO";
@@ -15,6 +15,6 @@ public class DetalleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detalle);
 
         FragmentDetalle detalle = (FragmentDetalle)getSupportFragmentManager().findFragmentById(R.id.frgDetalle);
-        detalle.mostrarDetalle((ModelClass)getIntent().getSerializableExtra(EXTRA_TEXTO));
+        detalle.mostrarDetalle((Star)getIntent().getSerializableExtra(EXTRA_TEXTO));
     }
 }

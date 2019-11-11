@@ -14,19 +14,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.carlesramos.examen_pm.R;
 import com.carlesramos.examen_pm.adapters.DataAdapter;
 import com.carlesramos.examen_pm.interficies.IMiListener;
-import com.carlesramos.examen_pm.model.ModelClass;
+import com.carlesramos.examen_pm.model.Star;
 import com.carlesramos.examen_pm.parsers.DataParser;
 
 public class FragmentListado extends Fragment {
     private IMiListener listener;
     private RecyclerView rvListado;
-    private ModelClass[] modelos;
+    private Star[] stars;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         DataParser parser = new DataParser(getActivity());
         if (parser.parse()){
-            modelos = parser.getModelClasses();
+            stars = parser.getStars();
         }
         return inflater.inflate(R.layout.fragment_listado,container,false);
     }
@@ -35,7 +35,7 @@ public class FragmentListado extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         rvListado = getView().findViewById(R.id.rvListado);
-        rvListado.setAdapter(new DataAdapter(listener, modelos));
+        rvListado.setAdapter(new DataAdapter(listener, stars));
         //prepare per a linearlayout vertical(aixo dependrá del tipus solicitat)
         rvListado.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL, false));
     }
@@ -44,7 +44,7 @@ public class FragmentListado extends Fragment {
         this.listener = listener;
     }
 
-    public ModelClass[] getModelos() {
-        return modelos;
+    public Star[] getStars() {
+        return stars;
     }
 }

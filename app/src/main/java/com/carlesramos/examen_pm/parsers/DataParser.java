@@ -1,7 +1,9 @@
 package com.carlesramos.examen_pm.parsers;
 
 import android.content.Context;
-import com.carlesramos.examen_pm.model.ModelClass;
+
+import com.carlesramos.examen_pm.R;
+import com.carlesramos.examen_pm.model.Star;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,21 +13,20 @@ import java.io.InputStream;
 
 public class DataParser {
     //crear array del model
-    private ModelClass[] modelClasses;
+    private Star[] stars;
     private InputStream dataFile;
 
     public DataParser(Context c) {
-        /*
-            obtenim una referencia al arxiu
-            dataFile = c.getResources().openRawResource(R.raw.[nom del arxiu])
-         */
+
+        //obtenim una referencia al arxiu
+        dataFile = c.getResources().openRawResource(R.raw.stars);
+
     }
 
     public boolean parse(){
         boolean parsed = false;
         String json = null;
-        //falta inicialitzar a null el array del model
-        modelClasses = null;
+        stars = null;
 
         try {
             int size = dataFile.available();
@@ -36,13 +37,22 @@ public class DataParser {
 
             JSONTokener tokener = new JSONTokener(json);
             JSONArray jsonArray = new JSONArray(tokener);
-            modelClasses = new ModelClass[jsonArray.length()];
+            stars = new Star[jsonArray.length()];
 
             for (int i=0; i<jsonArray.length(); i++){
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 //plenem les dades segons el model
-
+                int id = jsonObject.getInt("id");
+                int hip = jsonObject.getInt("hip");
+                String bf = jsonObject.getString("bf");
+                String proper = jsonObject.getString("proper");
+                double re = jsonObject.getDouble("ra");
+                double dec = jsonObject.getDouble("dec");
+                double dist = jsonObject.getDouble("dist");
+                double mag = jsonObject.getDouble("mag");
+                String spect = jsonObject.getString("spect");
                 //creem un nou objecte i l'anyadim al array
+                stars[i] = new Star(id,hip,bf,proper,re,dec,dist,mag,spect);
             }
             parsed = true;
         } catch (IOException e) {
@@ -53,7 +63,7 @@ public class DataParser {
         return parsed;
     }
 
-    public ModelClass[] getModelClasses() {
-        return modelClasses;
+    public Star[] getStars() {
+        return stars;
     }
 }

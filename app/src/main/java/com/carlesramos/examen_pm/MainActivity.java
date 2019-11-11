@@ -4,11 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.carlesramos.examen_pm.fragments.FragmentDetalle;
 import com.carlesramos.examen_pm.fragments.FragmentListado;
 import com.carlesramos.examen_pm.interficies.IMiListener;
-import com.carlesramos.examen_pm.model.ModelClass;
+import com.carlesramos.examen_pm.model.Star;
 
 public class MainActivity extends AppCompatActivity implements IMiListener {
     private FragmentListado frgListado;
@@ -24,16 +25,17 @@ public class MainActivity extends AppCompatActivity implements IMiListener {
     @Override
     public void onItemSelected(int position) {
         boolean hayDetalle = (getSupportFragmentManager().findFragmentById(R.id.frgDetalle) != null);
-        ModelClass modelClass = frgListado.getModelos()[position];
-
-        if (hayDetalle) {
+        Star star = frgListado.getStars()[position];
+        Toast.makeText(this, "Ascension recta: " + star.getRa()
+                + "\nDeclinación: " + star.getDec(), Toast.LENGTH_SHORT).show();
+        /*if (hayDetalle) {
             FragmentDetalle frgDetalle = (FragmentDetalle)getSupportFragmentManager().findFragmentById(R.id.frgDetalle);
-            frgDetalle.mostrarDetalle(modelClass);
+            frgDetalle.mostrarDetalle(star);
         }
         else {
             Intent i = new Intent(this, DetalleActivity.class);
-            i.putExtra(DetalleActivity.EXTRA_TEXTO, modelClass);
+            i.putExtra(DetalleActivity.EXTRA_TEXTO, star);
             startActivity(i);
-        }
+        }*/
     }
 }

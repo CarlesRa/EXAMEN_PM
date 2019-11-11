@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.carlesramos.examen_pm.R;
-import com.carlesramos.examen_pm.model.ModelClass;
+import com.carlesramos.examen_pm.model.Star;
 
 public class FragmentDetalle extends Fragment {
     //creem atributs per a tots el elements textView etc del layout
@@ -26,7 +26,7 @@ public class FragmentDetalle extends Fragment {
         return layout;
     }
 
-    public void mostrarDetalle(ModelClass m){
+    public void mostrarDetalle(Star m){
         //donem valors a tots el atributs
     }
 }
