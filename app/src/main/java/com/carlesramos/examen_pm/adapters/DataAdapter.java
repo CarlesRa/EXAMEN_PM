@@ -63,7 +63,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ModelViewHolde
         }
 
         public void bindModel(Star star){
-            // pose valors als textsviews i altres elements
+            // pose valors als textviews
             tvId.setText(String.valueOf(star.getId()));
             tvProper.setText(star.getProper());
             tvDist.setText(String.valueOf(star.getDist()));

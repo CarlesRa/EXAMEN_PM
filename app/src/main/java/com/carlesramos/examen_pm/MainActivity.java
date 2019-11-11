@@ -27,10 +27,10 @@ public class MainActivity extends AppCompatActivity implements IMiListener {
         Star star = frgListado.getStars().get(position);
         Toast.makeText(this, "Ascension recta: " + star.getRa()
                 + "\nDeclinación: " + star.getDec(), Toast.LENGTH_SHORT).show();
-        sb.append("Id: ").append(star.getId()).append(" Hip: ").append(star.getHip()).append(" Bf: ")
-                .append(star.getBf()).append(" Proper: ").append(star.getProper()).append(" Ra: ")
-                .append(star.getRa()).append(" Dec: ").append(star.getDec()).append(" Dist: ")
-                .append(star.getDist()).append(" Mag: ").append(star.getMag()).append(" Spect: ")
+        sb.append("Id:").append(star.getId()).append(" Hip:").append(star.getHip()).append(" Bf:")
+                .append(star.getBf()).append(" Proper:").append(star.getProper()).append(" Ra:")
+                .append(star.getRa()).append(" Dec:").append(star.getDec()).append(" Dist:")
+                .append(star.getDist()).append(" Mag:").append(star.getMag()).append(" Spect:")
                 .append(star.getSpect());
         Log.i( "Complet Info:",sb.toString());
     }
