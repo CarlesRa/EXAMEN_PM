@@ -12,4 +12,10 @@
         android:name="com.carlesramos.examen_pm.fragments.FragmentListado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <fragment
+        android:id="@+id/frgDetalle"
+        android:name="com.carlesramos.examen_pm.fragments.FragmentDetalle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>
